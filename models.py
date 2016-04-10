@@ -6,7 +6,8 @@ import markdown
 
 class Post(models.Model):
 	title = models.CharField(max_length=500)
-	published_date = models.DateTimeField('date published')
+	published_date = models.DateTimeField('date published', null=True)
+	formated_published_date = None
 	is_published = models.BooleanField(default=False)
 	text = models.TextField()
 

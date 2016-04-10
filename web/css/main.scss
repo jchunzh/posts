@@ -1,0 +1,175 @@
+@import 'grid';
+
+$theme: #000000;
+$theme-light: #000000;
+$accent: #000000;
+$accent-light: #000000;
+
+$grey-light: #B5ADB2;
+$grey-very-dark: #403D3F;
+
+$text-font-size: 1em;
+$title-font-size: 2em;
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+$font-color: $grey-very-dark;
+$menu-header: $grey-light;
+$link-hover-color: #E5EBFF;
+$menu-font-size: 1em;
+
+@mixin hide-sidebar() {
+	display: none;
+}
+
+@mixin show-sidebar() {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	margin: 0;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+@media (max-width: $max-mobile-width) {
+	.empty-col-left {
+		@include col-1-12(1);
+		min-height: 1px;
+	}
+
+	.empty-col-right {
+
+	}
+
+	.container-12-pad {
+	  padding: 0px;
+	}
+
+	.container-12-pad > [class*='col-']:last-of-type {
+	  padding-right: 0px;
+	}
+
+	.wrapper {
+		@include col-1-12(11);
+	}
+
+	.sidebar {
+		@include hide-sidebar()
+	}
+
+	.main {
+		@include col-1-1();
+	}
+
+	.mobile-sidebar-button {
+		display: inline-block;
+	}
+
+	.mobile-sidebar-button:active {
+
+	}
+}
+
+@media (min-width: $min-desktop-width) {
+	.empty-col-left {
+		@include col-1-12(2);
+		min-height: 1px;
+	}
+
+	.empty-col-right {
+		@include col-1-12(2);
+		min-height: 1px;
+	}
+
+	.container-12-pad {
+	  padding: 20px 0 20px 20px;
+	}
+
+	.container-12-pad > [class*='col-']:last-of-type {
+	  padding-right: 20px;
+	}
+
+	.wrapper {
+		@include col-2-3();
+		margin: 4em 0 0 0;
+	}
+
+	.sidebar {
+		@include show-sidebar();
+	}
+
+	.mobile-sidebar-button {
+		display: none;
+	}
+}
+
+.h-center {
+	margin: 0 auto;
+}
+
+.post
+{
+	margin: 0 0 3em 0;
+}
+
+.post-title
+{
+	font-size: $title-font-size;
+}
+
+.post-pub-date
+{
+	font-size: $text-font-size * 2/3;
+	color: $grey-light;
+}
+
+.post-content
+{
+	margin: .2em 0 0 0;
+	font-size: $text-font-size;
+}
+
+.post-header
+{
+	margin: 0 0 1em 0;
+}
+
+.menu-header {
+	color: $menu-header;
+}
+
+.menu {
+	width: 50%;
+	font-size: $menu-font-size;
+}
+
+.menu > a {
+	width: 100%;
+	color: $font-color;
+	text-decoration: none;
+	font-weight: $font-weight-bold;
+	display: inline-block;
+	border-radius: .1em;
+}
+
+.menu > a:hover {
+	background: $link-hover-color;
+}
+
+.menu > * {
+	padding: 0 0 0 1em;
+	margin: 0 0 .3em 0;
+}
+
+.menu-spacer {
+	height: $menu-font-size;
+}
+
+.sidebar {
+}
+
+.posts {
+}

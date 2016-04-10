@@ -1,21 +1,27 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Post
+from posts.models import Post
+from rest_framework import viewsets, mixins
+from rest_framework.decorators import detail_route, list_route
+from rest_framework.response import Response
+from django.shortcuts import render
+from posts.Facades.PostFacade import PostFacade
+from posts.Serializers.PostSerializer import PostSerializer
+from django.shortcuts import render_to_response
+
 import markdown
 
-def index(request):
-	posts = Post.objects.filter(is_published=True).order_by('-published_date')
+# def detail(request, post_id):
+# 	post = get_object_or_404(Post, pk=post_id)
+# 	return render(request, 'posts/detail.html', { 'post' : markdown_text(post) })
 
-	for p in posts:
-		markdown_text(p)
-
-	return render(request, 'posts/index.html', { 'posts' : posts})
-
-def detail(request, post_id):
-	post = get_object_or_404(Post, pk=post_id)
-	return render(request, 'posts/detail.html', { 'post' : markdown_text(post) })
-
-def markdown_tutorial(request):
-	return render(request, 'posts/markdown.html')
-
-def markdown_text(post):
-	post.text = markdown.markdown(post.text)
+class PostsViewSet(viewsets.ViewSet):
+	def __init__(self):
+		self._postFacade = PostFacade()
+		
+	@list_route(methods=['get'])
+	def getAllPublishedPosts(self, request):
+		publishedPosts = self._postFacade.getAllPublishedPosts()
+		serializedPosts = PostSerializer(publishedPosts, many=True)
+		
+		return Response(serializedPosts.data)
+		
+	
