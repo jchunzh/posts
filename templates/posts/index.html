@@ -1,13 +1,15 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html ng-app='postsApp'>
 	<head>
-		<script type="text/javascript" src="/static/posts/js/lib/angular/angular.js"></script>
-		<script type="text/javascript" src="/static/posts/js/lib/angular-resource/angular-resource.js"></script>
-		<script type="text/javascript" src="/static/posts/js/postsApp.js"></script>
-		<script type="text/javascript" src="/static/posts/js/services/postsService.js"></script>
-		<script type="text/javascript" src="/static/posts/js/controllers/indexController.js"></script>
+		<script type="text/javascript" src={% static "posts/js/lib/angular/angular.js" %}></script>
+		<script type="text/javascript" src={% static "posts/js/lib/angular-resource/angular-resource.js" %}></script>
+		<script type="text/javascript" src={% static "posts/js/postsApp.js" %}></script>
+		<script type="text/javascript" src={% static "posts/js/services/postsService.js" %}></script>
+		<script type="text/javascript" src={% static "posts/js/controllers/indexController.js" %}></script>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="/static/posts/css/main.css">
+		<link rel="stylesheet" type="text/css" href={% static "posts/css/main.css" %}>
+		<title>James's blog</title>
 	</head>
 	{% verbatim %}
 	<body>
