@@ -34,7 +34,7 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
-@media (max-width: $max-mobile-width) {
+@media (max-device-width: $max-mobile-width) {
 	.empty-col-left {
 		@include col-1-12(1);
 		min-height: 1px;
@@ -73,7 +73,7 @@ body {
 	}
 }
 
-@media (min-width: $min-desktop-width) {
+@media (min-device-width: $min-desktop-width) {
 	.empty-col-left {
 		@include col-1-12(2);
 		min-height: 1px;
