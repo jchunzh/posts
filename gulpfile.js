@@ -7,11 +7,11 @@ var watch = require('gulp-watch');
 var localDeploymentFolder = 'static/posts/';
 
 gulp.task('default', function(callback) {
-	runSequence('clean:static', ['sass', 'lib', 'js', 'img', 'html', 'watch'], callback);
+	runSequence('clean:static', ['sass', 'lib', 'js', 'img', 'html'], callback);
 });
 
-gulp.task('prod', function(callback) {
-	runSequence('clean:static', ['sass', 'lib', 'js', 'img', 'html'], callback);
+gulp.task('dev', function(callback) {
+	runSequence('clean:static', ['sass', 'lib', 'js', 'img', 'html', 'watch'], callback);
 });
 
 gulp.task('watch', ['clean:static'], function() {
